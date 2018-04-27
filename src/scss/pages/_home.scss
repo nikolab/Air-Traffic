@@ -1,0 +1,23 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the home page.
+// -----------------------------------------------------------------------------
+
+.show-flight-list {
+	text-align: center;
+	padding: 48px;
+	
+	
+	.message {
+		font-size: 18px;
+		background: black;
+		border-radius: 10px;
+		color: white;
+		max-width: 400px;
+		margin: 0 auto 32px;
+		
+		p {
+			padding: 25px;
+		}
+	}
+	
+}

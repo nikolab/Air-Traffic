@@ -1,0 +1,98 @@
+/*
+*  Layout Grid
+*/
+
+//Full width wrapper
+.wrapper-full {
+	@include make-wrapper();
+}
+
+// Wrapper width max-width
+.wrapper {
+	@include make-wrapper();
+	@include make-wrapper-max-widths();
+	//max-width: $max-width;
+}
+
+// Holder - hold columns
+.holder {
+	@include make-holder();
+}
+
+// Common properties for all breakpoints
+%grid-column {
+	position: relative;
+	width: 100%;
+	min-height: 1px; // Prevent columns from collapsing when empty
+	padding-right: ($grid-gutter-width / 2);
+	padding-left:  ($grid-gutter-width / 2);
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+	$infix: breakpoint-infix($breakpoint, $breakpoints);
+	// Allow columns to stretch full width below their breakpoints
+	@for $i from 1 through $grid-columns {
+		.#{$infix}-#{$i} {
+			@extend %grid-column;
+		}
+	}
+	.#{$infix},
+	.#{$infix}-auto {
+		@extend %grid-column;
+	}
+	
+	@include media-breakpoint-up($breakpoint, $breakpoints) {
+		
+		.#{$infix} {
+			flex-basis: 0;
+			flex-grow: 1;
+			max-width: 100%;
+		}
+		.#{$infix}-auto {
+			flex: 0 0 auto;
+			width: auto;
+			max-width: none; // Reset earlier grid tiers
+		}
+		
+		// Give columns width based on breakpoints
+		@for $i from 1 through $grid-columns {
+			.#{$infix}-#{$i} {
+				@include make-col($i, $grid-columns);
+			}
+		}
+		
+		
+		// Flex order
+		//@for $i from 1 through $grid-columns {
+		//	.order-#{$infix}-#{$i} {
+		//		order: $i;
+		//	}
+		//}
+		
+		// Make offset column style
+		@for $i from 0 through ($grid-columns - 1) {
+			@if not ($infix == "" and $i == 0) {
+				.offset-#{$infix}-#{$i} {
+					@include make-col-offset($i, $grid-columns);
+				}
+			}
+		}
+		
+		//Make pull column style
+		@for $i from 0 through ($grid-columns) {
+			.#{$infix}-pull-#{$i} {
+				@include make-col-pull($i);
+			}
+		}
+		
+		//Make push column style
+		@for $i from 0 through ($grid-columns) {
+			.#{$infix}-push-#{$i} {
+				@include make-col-push($i);
+			}
+		}
+	}
+}
+
+
+

@@ -1,0 +1,63 @@
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+$font-path: './../../src/fonts';
+
+$font-family-sans-serif:  'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$font-family-serif:       'Georgia', "Times New Roman", Times, serif !default;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
+$font-family-base:        $font-family-sans-serif !default;
+
+
+$font-size-base:          16px !default;
+
+
+//** line-height
+$line-height-base:        1.6 !default;
+
+//** By default, this inherits from the `<body>`.
+$headings-font-family:    inherit !default;
+$headings-font-weight:    500 !default;
+$headings-line-height:    1.1 !default;
+$headings-color:          inherit !default;
+
+
+// General variables
+$text-color-global: $black;
+
+// Font variables
+$roboto: 'Roboto', sans-serif;
+$curly-joe: 'Curly Joe';
+
+// Font sizes for mobile phones (up to $screen-tb)
+// $font-size-global is for all elements (except headers that are defined manually)
+$font-global: 14px;
+$line-height-global: 1.4 !default;
+$h6: 12;
+$h5: 14;
+$h4: 16;
+$h3: 18;
+$h2: 20;
+$h1: 22;
+
+// Font sizes for tablets (up from $screen-tb)
+$font-global-tb: 15px;
+$line-height-global-tb: 24px !default;
+$h6-tb: 14;
+$h5-tb: 16;
+$h4-tb: 18;
+$h3-tb: 20;
+$h2-tb: 22;
+$h1-tb: 24;
+
+//Font sizes for lap-tops (up from $screen-lp)
+$font-global-lp: 16px;
+$line-height-global-lp: 26px !default;
+$h6-lp: 16;
+$h5-lp: 18;
+$h4-lp: 20;
+$h3-lp: 24;
+$h2-lp: 34;
+$h1-lp: 36;

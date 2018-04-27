@@ -1,0 +1,14 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer.
+// -----------------------------------------------------------------------------
+
+.site-footer {
+	background: $black;
+	text-align: center;
+	color: $white;
+	padding: 15px;
+	
+	p {
+		margin-bottom: 0;
+	}
+}

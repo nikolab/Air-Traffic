@@ -1,0 +1,148 @@
+/*----------  responsive breakpoints
+------------------------------------------------------------------------------*/
+
+@mixin breakpoint ($value) {
+	@if $value == 'phone' {
+		@media only screen and (min-width: 120px) and (max-width: 767px) { @content; }
+	}
+	
+	@else if $value == 'tablet' {
+		@media only screen and (min-width: 768px) and (max-width: 1024px) { @content; }
+	}
+	
+	@else if $value == 'desktop' {
+		@media only screen and (min-width: 1025px) { @content }
+	}
+	
+	@else {
+		@media only screen and (max-width: $value) { @content; }
+	}
+}
+
+/*----- Box sizing
+------------------------------*/
+@mixin box-sizing($box-model) {
+	-webkit-box-sizing: $box-model; // Safari <= 5
+	-moz-box-sizing: $box-model; // Firefox <= 19
+	box-sizing: $box-model;
+}
+
+/*----- Clearfix
+------------------------------*/
+@mixin clearfix() {
+	&::after {
+		display: block;
+		clear: both;
+		content: "";
+	}
+}
+
+/*----------  font smoothing
+------------------------------------------------------------------------------*/
+
+@mixin font-smoothing ($val: antialiased) {
+	-webkit-font-smoothing: $val;
+	-moz-font-smoothing: $val;
+	-ms-font-smoothing: $val;
+	-o-font-smoothing: $val;
+}
+
+/*----- Pseudo element
+------------------------------*/
+
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+	content: $content;
+	display: $display;
+	position: $pos;
+}
+
+/*----- Centerer
+------------------------------*/
+
+@mixin centerer {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/*----- Vertical align
+------------------------------*/
+
+@mixin vertical-align {
+	position: relative;
+	top: 50%;
+	transform: translate( 0, -50%);
+}
+
+
+/*----- Horizontal align
+------------------------------*/
+
+@mixin vertical-align {
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+
+/*----- Placeholder
+------------------------------*/
+@mixin placeholder {
+	
+	*::-webkit-input-placeholder {
+		@content;
+	}
+	
+	*:-moz-placeholder {
+		@content;
+	}
+	
+	*::-moz-placeholder {
+		@content;
+	}
+	
+	*:-ms-input-placeholder {
+		@content;
+	}
+	
+	*:-ms-input-placeholder {
+		@content;
+	}
+}
+
+/*------ Column width with margin for woocommerce
+------------------------------------------------------*/
+@mixin column-width($numberColumns: 3) {
+	width: map-get( $columns, $numberColumns ) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
+}
+
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+	@if type-of($number) == 'number' and not unitless($number) {
+		@return $number / ($number * 0 + 1);
+	}
+	
+	@return $number;
+}
+
+/*----- px to em
+---------------------------------------------*/
+
+@function em($px, $base: strip-unit($font-size-base)) {
+	
+	@return ($px / $base) * 1em;
+}
+
+/*----- color from map
+------------------------------*/
+
+@function color($key) {
+	@if not map-has-key($colors, $key) {
+		@warn "Key `#{$key}` not found in $colors map.";
+	}
+	@return map-get($colors, $key);
+}
+

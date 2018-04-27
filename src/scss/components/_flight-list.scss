@@ -1,0 +1,37 @@
+.list-flights {
+	max-width: 800px;
+	width: 100%;
+	margin: 48px auto;
+	
+	
+	li {
+		cursor: pointer;
+		padding: 10px 25px;
+		border: 1px solid $border;
+		border-bottom: 0;
+		text-align: initial;
+		transition: background ease .3s;
+		
+		a {
+			color: $black;
+		}
+		
+		span {
+			display: inline-block;
+			width: 40%;
+			text-align: left;
+			
+			&:first-child {
+				width: 20%;
+			}
+		}
+		
+		&:nth-child(odd) {
+			background: $banana;
+		}
+		
+		&:hover {
+			background: $gray-light;
+		}
+	}
+}

@@ -1,0 +1,22 @@
+# track this file .gitignore (i.e. do NOT ignore it)
+!.gitignore
+
+# ignore node/bower dependency directories
+node_modules/
+bower_components/
+
+
+# Ignore all files that start  ~
+~*
+
+# Ignore all idea iws files and xml
+.idea/
+
+# Ignore README.md
+README.md
+
+# Ignore OS generated files
+ehthumbs.db
+Thumbs.db
+.sass-cache
+.DS_Store
